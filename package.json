@@ -1,0 +1,27 @@
+{
+  "name": "atom-todo",
+  "version": "1.0.0",
+  "description": "a todo list built in a day for the wonderful folks at atom",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/owenarthur/atom-todo.git"
+  },
+  "author": "owen arthur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/owenarthur/atom-todo/issues"
+  },
+  "homepage": "https://github.com/owenarthur/atom-todo#readme",
+  "devDependencies": {
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-react-hooks": "^4.1.2"
+  }
+}
