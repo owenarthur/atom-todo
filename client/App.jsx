@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Router, Route } from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
@@ -36,67 +36,52 @@ const Container = styled.div`
     background: transparent;
 `;
 
-const todos = [
-  {
-    _id: '5f7622242090efb966d1430c',
-    userId: 1,
-    user: 'owen',
-    todoId: 1,
-    title: 'double check',
-    description: 'i extra need a job',
-    status: 2,
-    __v: 0,
-  },
-  {
-    _id: '5f7622242090efb966d1430c',
-    userId: 1,
-    user: 'owen',
-    todoId: 1,
-    title: 'double check',
-    description: 'i extra need a job',
-    status: 1,
-    __v: 0,
-  },
-  {
-    _id: '5f7622242090efb966d1430c',
-    userId: 1,
-    user: 'owen',
-    todoId: 1,
-    title: 'double check',
-    description: 'i extra need a job',
-    status: 1,
-    __v: 0,
-  },
-];
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      current: {},
+    }
+    this.selectTodo = this.selectTodo.bind(this);
+  }
 
-const App = () => (
-  <Router history={ history }>
-    <Backdrop>
-      <Container>
-        <AnimatedSwitch
-          exact
-          path="/"
-          atEnter={{ opacity: 0 }}
-          atLeave={{ opacity: 0 }}
-          atActive={{ opacity: 1 }}
-          className="switch-wrapper"
-          >
-          <Route exact path="/">
-            <SignIn />
-          </Route>
-          <Route path="/home">
-            <Home todos={todos} />
-          </Route>
-          <Route path="/new">
-            <NewTodo />
-          </Route>
-          <Route path="/current">
-            <CurrentTodo />
-          </Route>
-        </AnimatedSwitch>
-      </Container>
-    </Backdrop>
-  </Router>
-);
+  selectTodo( current ) {
+    // this.setState({ current });
+    console.log(current);
+  }
+
+  render() {
+    const { current } = this.state;
+    return (
+      <Router history={ history }>
+        <Backdrop>
+          <Container>
+            <AnimatedSwitch
+              exact
+              path="/"
+              atEnter={{ opacity: 0 }}
+              atLeave={{ opacity: 0 }}
+              atActive={{ opacity: 1 }}
+              className="switch-wrapper"
+              >
+              <Route exact path="/">
+                <SignIn />
+              </Route>
+              <Route path="/home">
+                <Home selectTodo={this.selectTodo} />
+              </Route>
+              <Route path="/new">
+                <NewTodo />
+              </Route>
+              <Route path="/current">
+                <CurrentTodo current={current}/>
+              </Route>
+            </AnimatedSwitch>
+          </Container>
+        </Backdrop>
+      </Router>
+    )
+  };
+}
 
 export default App;
