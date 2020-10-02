@@ -20,5 +20,7 @@ module.exports = {
   ],
   rules: {
     'no-console': 'off',
+    'import/extensions': 'never',
+    'react/prop-types': [0],
   },
 };

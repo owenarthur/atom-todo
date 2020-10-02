@@ -6,9 +6,9 @@
   "scripts": {
     "test": "test",
     "server:dev": "nodemon server/index.js",
-    "client:dev": "webpack",
+    "client:dev": "webpack -d --watch",
     "server": "node server/index.js",
-    "client": "webpack -d --watch"
+    "client": "webpack"
   },
   "repository": {
     "type": "git",
