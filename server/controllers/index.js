@@ -30,15 +30,16 @@ module.exports = {
       });
     },
 
-    // put: (req, res) => {
-    //   models.updateTodo(name, (error, result) => {
-    //     if (error) {
-    //       console.log(error);
-    //     } else {
-    //       res.send(result);
-    //     }
-    //   });
-    // },
+    put: (req, res) => {
+      const data = { user: req.body.user, _id: req.body._id };
+      models.updateTodo(data, (error, result) => {
+        if (error) {
+          console.log(error);
+        } else {
+          res.send(result);
+        }
+      });
+    },
 
   },
 };
