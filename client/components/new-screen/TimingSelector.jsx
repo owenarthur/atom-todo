@@ -35,12 +35,14 @@ const TimingSelecterIcon = styled.div`
   border-radius: 3px;
 `;
 
-function TimingSelector({ timing, num, color, timingChange }) {
-  const string = `mark as ${timing}`
+function TimingSelector({
+  timing, num, color, timingChange,
+}) {
+  const string = `mark as ${timing}`;
 
-  const onClick = (e) => {
-    timingChange(num)
-  }
+  const onClick = () => {
+    timingChange(num);
+  };
 
   return (
     <>

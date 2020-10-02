@@ -42,24 +42,24 @@ class App extends Component {
     this.state = {
       current: {},
       token: '',
-    }
+    };
     this.selectTodo = this.selectTodo.bind(this);
     this.updateToken = this.updateToken.bind(this);
   }
 
   selectTodo(current) {
-    this.setState({ current });
+    this.setState({ current: current[0] });
   }
 
   updateToken(fetchedToken) {
     const { token } = this.state;
-    if(!token) this.setState({ token: fetchedToken });
+    if (!token) this.setState({ token: fetchedToken });
   }
 
   render() {
     const { current, token } = this.state;
     return (
-      <Router history={ history }>
+      <Router history={history}>
         <Backdrop>
           <Container>
             <AnimatedSwitch
@@ -69,25 +69,25 @@ class App extends Component {
               atLeave={{ opacity: 0 }}
               atActive={{ opacity: 1 }}
               className="switch-wrapper"
-              >
+            >
               <Route exact path="/">
                 <SignIn />
               </Route>
               <Route path="/home">
-                <Home selectTodo={this.selectTodo} updateToken={this.updateToken} />
+                <Home selectTodo={this.selectTodo} updateToken={this.updateToken} token={token} />
               </Route>
               <Route path="/new">
-                <NewTodo token={token}/>
+                <NewTodo token={token} />
               </Route>
               <Route path="/current">
-                <CurrentTodo current={current}/>
+                <CurrentTodo current={current} token={token} />
               </Route>
             </AnimatedSwitch>
           </Container>
         </Backdrop>
       </Router>
-    )
-  };
+    );
+  }
 }
 
 export default App;

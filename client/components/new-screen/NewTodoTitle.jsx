@@ -35,10 +35,9 @@ const TitleFormColor = styled.div`
 `;
 
 function NewTodoTitle({ titleChange }) {
-
   const onChange = (e) => {
-    titleChange(e.target.value)
-  }
+    titleChange(e.target.value);
+  };
 
   return (
     <>

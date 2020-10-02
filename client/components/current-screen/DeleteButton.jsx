@@ -6,6 +6,7 @@ const DeleteButtonDiv = styled.div`
   width: 375px;
   height: 56px;
   left: 0px;
+  cursor: pointer;
 
   background: rgba(255, 170, 170, 0.3);
 `;
@@ -23,9 +24,12 @@ const DeleteButtonText = styled.div`
   color: #FF6A6A;
 `;
 
-function DeleteButton() {
+function DeleteButton({ onDelete }) {
+  const onClick = () => {
+    onDelete();
+  };
   return (
-    <DeleteButtonDiv>
+    <DeleteButtonDiv onClick={onClick}>
       <DeleteButtonText>
         delete
       </DeleteButtonText>

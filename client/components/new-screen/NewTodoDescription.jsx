@@ -27,10 +27,9 @@ const DetailFormDiv = styled.div`
   `;
 
 function NewTodoDetail({ descriptionChange }) {
-
   const onChange = (e) => {
-    descriptionChange(e.target.value)
-  }
+    descriptionChange(e.target.value);
+  };
 
   return (
     <DetailFormDiv>

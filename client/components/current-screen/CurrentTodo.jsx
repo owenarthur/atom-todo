@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 
 import NotStarted from '../../assets/not-started.svg';
 import InProgress from '../../assets/in-progress.svg';
@@ -7,6 +9,7 @@ import Completed from '../../assets/completed.svg';
 
 import Header from './Header.jsx';
 import CurrentTodoTitle from './CurrentTodoTitle.jsx';
+import CurrentTodoDescription from './CurrentTodoDescription.jsx';
 import DeleteButton from './DeleteButton.jsx';
 
 const TodoBody = styled.div`
@@ -30,7 +33,8 @@ const ContentBar = styled.div`
 const ContentBarText = styled.div`
   position: absolute;
   height: 23px;
-  left: 30px;
+  left: 170px;
+  align-items: right;
 
   font-family: Futura;
   font-style: normal;
@@ -49,52 +53,198 @@ const ContentBarStatus = styled.div`
   line-height: 80px;
 `;
 
-class NewTodo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+function CurrentTodo({current, token}) {
+  const {title, description, status, user, timing, _id} = current;
+
+  const deleteTodo = () => {
+    const todo = current;
+    const options = {
+      method: 'DELETE',
+      url: `http://localhost:5000/todos/${user}/${_id}`,
+      headers: { authorization: `Bearer ${token}` },
+      data: todo,
+    };
+    axios.request(options)
+      .then((response) => console.log(response))
+      .catch((error) => console.error(error));
+  };
+
+  const updateStatus = (num) => {
+    const todo = {
+      user,
+      title,
+      description,
+      timing,
+      status: num,
+    };
+    const options = {
+      method: 'PUT',
+      url: `http://localhost:5000/todos/${email}/${_id}`,
+      headers: { authorization: `Bearer ${token}` },
+      data: todo,
+    };
+    axios.request(options)
+      .then((response) => console.log(response))
+      .catch((error) => console.error(error));
+  };
+
+  const markNotStarted = () => {
+    updateStatus(1);
+  };
+
+  const markInProgress = () => {
+    updateStatus(2);
+  };
+
+  const markCompleted = () => {
+    updateStatus(3);
+  };
+
+  const onDelete = () => {
+    deleteTodo();
   }
 
-  render() {
-    return (
-      <>
-        <Header />
-        <TodoBody>
-          <CurrentTodoTitle />
-          <CurrentTodoTitle />
-          <MidSpacer />
-          <ContentBar>
-            <ContentBarText>
-              mark as not started
-            </ContentBarText>
-            <ContentBarStatus>
-              <NotStarted />
-            </ContentBarStatus>
-          </ContentBar>
-          <MidSpacer />
-          <ContentBar>
-            <ContentBarText>
-              mark as in progress
-            </ContentBarText>
-            <ContentBarStatus>
-              <InProgress />
-            </ContentBarStatus>
-          </ContentBar>
-          <MidSpacer />
-          <ContentBar>
-            <ContentBarText>
-              mark as completed
-            </ContentBarText>
-            <ContentBarStatus>
-              <Completed />
-            </ContentBarStatus>
-          </ContentBar>
-        </TodoBody>
+  return (
+    <>
+      <Header />
+      <TodoBody>
+        <CurrentTodoTitle title={title} />
         <MidSpacer />
-        <DeleteButton />
-      </>
-    );
-  }
+        <CurrentTodoDescription description={description} />
+        <MidSpacer />
+        <ContentBar onClick={markNotStarted}>
+          <ContentBarText>
+            mark as not started
+          </ContentBarText>
+          <ContentBarStatus>
+            <NotStarted />
+          </ContentBarStatus>
+        </ContentBar>
+        <MidSpacer />
+        <ContentBar onClick={markInProgress}>
+          <ContentBarText>
+            mark as in progress
+          </ContentBarText>
+          <ContentBarStatus>
+            <InProgress />
+          </ContentBarStatus>
+        </ContentBar>
+        <MidSpacer />
+        <ContentBar onClick={markCompleted}>
+          <ContentBarText>
+            mark as completed
+          </ContentBarText>
+          <ContentBarStatus>
+            <Completed />
+          </ContentBarStatus>
+        </ContentBar>
+      </TodoBody>
+      <MidSpacer />
+      <NavLink to="/home">
+        <DeleteButton onDelete={onDelete} />
+      </NavLink>
+    </>
+  );
 }
 
-export default NewTodo;
+export default CurrentTodo;
+// import React, { Component } from 'react';
+// import styled from 'styled-components';
+
+// import NotStarted from '../../assets/not-started.svg';
+// import InProgress from '../../assets/in-progress.svg';
+// import Completed from '../../assets/completed.svg';
+
+// import Header from './Header.jsx';
+// import CurrentTodoTitle from './CurrentTodoTitle.jsx';
+// import DeleteButton from './DeleteButton.jsx';
+
+// const TodoBody = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   top: 98px;
+// `;
+
+// const MidSpacer = styled.div`
+//   height: 6px;
+// `;
+
+// const ContentBar = styled.div`
+//   position: relative;
+//   width: 375px;
+//   height: 68px;
+//   left: 0px;
+//   background: rgba(255, 255, 255, 0.1)
+// `;
+
+// const ContentBarText = styled.div`
+//   position: absolute;
+//   height: 23px;
+//   left: 30px;
+
+//   font-family: Futura;
+//   font-style: normal;
+//   font-weight: 200;
+//   font-size: 12px;
+//   line-height: 68px;
+//   letter-spacing: 0.2em;
+//   color: #FFFFFF;
+// `;
+
+// const ContentBarStatus = styled.div`
+//   position: absolute;
+//   width: 23px;
+//   height: 23px;
+//   left: 333px;
+//   line-height: 80px;
+// `;
+
+// class NewTodo extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {};
+//   }
+
+//   render() {
+//     return (
+//       <>
+//         <Header />
+//         <TodoBody>
+//           <CurrentTodoTitle />
+//           <CurrentTodoTitle />
+//           <MidSpacer />
+//           <ContentBar>
+//             <ContentBarText>
+//               mark as not started
+//             </ContentBarText>
+//             <ContentBarStatus>
+//               <NotStarted />
+//             </ContentBarStatus>
+//           </ContentBar>
+//           <MidSpacer />
+//           <ContentBar>
+//             <ContentBarText>
+//               mark as in progress
+//             </ContentBarText>
+//             <ContentBarStatus>
+//               <InProgress />
+//             </ContentBarStatus>
+//           </ContentBar>
+//           <MidSpacer />
+//           <ContentBar>
+//             <ContentBarText>
+//               mark as completed
+//             </ContentBarText>
+//             <ContentBarStatus>
+//               <Completed />
+//             </ContentBarStatus>
+//           </ContentBar>
+//         </TodoBody>
+//         <MidSpacer />
+//         <DeleteButton />
+//       </>
+//     );
+//   }
+// }
+
+// export default NewTodo;

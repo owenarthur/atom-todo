@@ -13,9 +13,9 @@ module.exports = {
     },
 
     post: (req, res) => {
-      console.log('posting')
+      console.log('posting');
       const data = req.body;
-      console.log(data)
+      console.log(data);
       models.postTodo(data, (error, result) => {
         if (error) console.log('error at the post controller');
         else res.send(result);
@@ -23,7 +23,7 @@ module.exports = {
     },
 
     delete: (req, res) => {
-      const data = { userId: req.body.userId, todoId: req.body.todoId };
+      const data = { user: req.body.user, _id: req.body._id };
       models.deleteTodo(data, (error, result) => {
         if (error) console.log(error);
         else res.send(result);

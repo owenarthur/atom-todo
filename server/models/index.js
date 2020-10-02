@@ -16,7 +16,7 @@ module.exports = {
   },
 
   deleteTodo: (data, callback) => {
-    Todo.deleteOne({ userId: data.userId, todoId: data.todoId })
+    Todo.deleteOne({ user: data.user, _id: data._id })
       .then((result) => callback(null, result))
       .catch((err) => console.log(err));
   },

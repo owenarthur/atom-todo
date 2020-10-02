@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -12,59 +14,56 @@ const TodoBody = styled.div`
   top: 98px;
 `;
 
-function Home({ selectTodo, updateToken }) {
+function Home({ selectTodo, updateToken, token }) {
   const [allTodos, setAllTodos] = useState([]);
-  let [nows, soons, laters] = [[],[],[]]
+  let [nows, soons, laters] = [[], [], []];
   if (allTodos.length) {
-    nows = allTodos.filter(t => t.timing === 1)
-    soons = allTodos.filter(t => t.timing === 2)
-    laters = allTodos.filter(t => t.timing === 3)
+    nows = allTodos.filter((t) => t.timing === 1);
+    soons = allTodos.filter((t) => t.timing === 2);
+    laters = allTodos.filter((t) => t.timing === 3);
   }
 
-  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
-  const [token, setToken] = useState(0);
+  const { user, getAccessTokenSilently } = useAuth0();
   const [loaded, setLoaded] = useState(false);
   const { email } = user;
 
-
-
-  const getTodos = (token, email) => {
+  const getTodos = () => {
     const options = {
       method: 'GET',
       url: `http://localhost:5000/todos/${email}`,
-      headers: {authorization: `Bearer ${token}`}
+      headers: { authorization: `Bearer ${token}` },
     };
 
     axios.request(options)
       .then((response) => setAllTodos(response.data))
-      .catch((error) => console.error(error))
+      .catch(() => console.log('error'))
       .finally(() => {
         setLoaded(true);
-      })
+      });
   };
 
-
+  const buildTodo = (id) => {
+    const selected = allTodos.filter(todo => todo._id === id)
+    selectTodo(selected);
+  };
 
   useEffect(() => {
     if (!loaded) {
       getAccessTokenSilently()
-        .then(token => {
-          getTodos(token)
-          setToken(token)
-          updateToken(token);
-        })
+        .then((userToken) => {
+          getTodos(userToken);
+          updateToken(userToken);
+        });
     }
   });
-
 
   return (
     <>
       <Header />
-      {/* <div onClick={postTodo}>help</div> */}
       <TodoBody>
-        <Section title="NOW" color="#FF6A6A" todos={nows} selectTodo={selectTodo}/>
-        <Section title="SOON" color="#FFD56A" todos={soons} selectTodo={selectTodo}/>
-        <Section title="LATER" color="#6A9DFF" todos={laters} selectTodo={selectTodo}/>
+        <Section title="NOW" color="#FF6A6A" todos={nows} selectTodo={buildTodo} />
+        <Section title="SOON" color="#FFD56A" todos={soons} selectTodo={buildTodo} />
+        <Section title="LATER" color="#6A9DFF" todos={laters} selectTodo={buildTodo} />
       </TodoBody>
     </>
   );

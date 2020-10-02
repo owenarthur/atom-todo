@@ -1,23 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const TitleFormDiv = styled.div`
+const DescriptionFormDiv = styled.div`
   position: relative;
   width: 375px;
-  height: 68px;
+  height: 136px;
   left: 0px;
   background: rgba(255, 255, 255, 0.1);
 `;
 
-const TitleFormColor = styled.div`
+const DescriptionFormColor = styled.div`
   position: absolute;
   width: 17px;
-  height: 68px;
+  height: 136px;
   left: 0px;
   background: #FF6A6A;
 `;
 
-const TitleBarText = styled.div`
+const DescriptionFormText = styled.div`
   position: absolute;
   height: 23px;
   left: 30px;
@@ -31,17 +31,17 @@ const TitleBarText = styled.div`
   color: #FFFFFF;
 `;
 
-function CurrentTodoTitle({title}) {
+function CurrentTodoDescription({description}) {
   return (
     <>
-      <TitleFormDiv>
-        <TitleFormColor />
-        <TitleBarText>
-          {title}
-        </TitleBarText>
-      </TitleFormDiv>
+      <DescriptionFormDiv>
+        <DescriptionFormColor />
+        <DescriptionFormText>
+          {description}
+        </DescriptionFormText>
+      </DescriptionFormDiv>
     </>
   );
 }
 
-export default CurrentTodoTitle;
+export default CurrentTodoDescription;

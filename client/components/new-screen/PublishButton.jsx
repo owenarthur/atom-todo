@@ -26,8 +26,8 @@ const PublishButtonText = styled.div`
 
 function PublishButton({ onSubmit }) {
   const onClick = () => {
-    onSubmit()
-  }
+    onSubmit();
+  };
   return (
     <PublishButtonDiv onClick={onClick}>
       <PublishButtonText>
