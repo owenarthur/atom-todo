@@ -93,7 +93,7 @@ function NewTodo({ token }) {
           timingChange={timingChange}
         />
         <MidSpacer />
-        <NavLink to="/home">
+        <NavLink to="/home" style={{ textDecoration: 'none' }}>
           <PublishButton onSubmit={onSubmit} />
         </NavLink>
       </TodoBody>

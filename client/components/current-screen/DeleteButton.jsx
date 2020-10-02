@@ -20,7 +20,6 @@ const DeleteButtonText = styled.div`
   font-weight: 200;
   font-size: 14px;
   line-height: 56px;
-
   color: #FF6A6A;
 `;
 

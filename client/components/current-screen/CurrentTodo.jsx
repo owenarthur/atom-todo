@@ -140,7 +140,7 @@ function CurrentTodo({current, token}) {
         </ContentBar>
       </TodoBody>
       <MidSpacer />
-      <NavLink to="/home">
+      <NavLink to="/home" style={{ textDecoration: 'none' }}>
         <DeleteButton onDelete={onDelete} />
       </NavLink>
     </>
