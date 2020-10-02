@@ -23,6 +23,7 @@ module.exports = {
     },
 
     delete: (req, res) => {
+      console.log('deleting');
       const data = { user: req.body.user, _id: req.body._id };
       models.deleteTodo(data, (error, result) => {
         if (error) console.log(error);
@@ -31,8 +32,11 @@ module.exports = {
     },
 
     put: (req, res) => {
-      const data = { user: req.body.user, _id: req.body._id };
-      models.updateTodo(data, (error, result) => {
+      console.log('putting');
+      console.log(req.body)
+      const params = { user: req.body.user, _id: req.body._id };
+      const { status } = req.body;
+      models.updateTodo(params, status, (error, result) => {
         if (error) {
           console.log(error);
         } else {

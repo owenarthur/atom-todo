@@ -21,8 +21,10 @@ module.exports = {
       .catch((err) => console.log(err));
   },
 
-  // updateTodo: (callback) => {
-
-  // },
-
+  updateTodo: (params, status, callback) => {
+    console.log(params);
+    Todo.updateOne({ _id: params._id }, { status })
+      .then((result) => callback(null, result))
+      .catch((err) => console.log(err));
+  },
 };
