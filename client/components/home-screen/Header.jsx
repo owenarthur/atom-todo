@@ -36,9 +36,32 @@ const AddButton = styled.div`
 
 `;
 
+const HeaderBack = styled.div`
+  position: absolute;
+  width: 60px;
+  height: 23px;
+  left: 25px;
+  top: 50px;
+
+  font-family: Futura;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+
+  letter-spacing: 0.2em;
+
+  color: #FFFFFF;
+`;
+
 function Header() {
+  const carrot = '<';
   return (
     <HeaderDiv>
+      <NavLink to="/">
+        <HeaderBack>
+          {carrot}
+        </HeaderBack>
+      </NavLink>
       <HeaderText>
         MY LIST
       </HeaderText>

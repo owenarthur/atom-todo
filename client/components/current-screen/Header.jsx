@@ -27,11 +27,12 @@ const HeaderBack = styled.div`
 `;
 
 function Header() {
+  const carrot = '<';
   return (
     <HeaderDiv>
       <NavLink to="/home">
         <HeaderBack>
-          back
+          {carrot}
         </HeaderBack>
       </NavLink>
     </HeaderDiv>
