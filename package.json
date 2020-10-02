@@ -4,7 +4,11 @@
   "description": "a todo list built in a day for the wonderful folks at atom",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "server:dev": "nodemon server/index.js",
+    "client:dev": "webpack",
+    "server": "node server/index.js",
+    "client": "webpack -d --watch"
   },
   "repository": {
     "type": "git",
@@ -16,12 +20,40 @@
     "url": "https://github.com/owenarthur/atom-todo/issues"
   },
   "homepage": "https://github.com/owenarthur/atom-todo#readme",
+  "dependencies": {
+    "@auth0/auth0-react": "^1.1.0",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-router-transition": "^2.0.0",
+    "react-transition-group": "^4.4.1",
+    "styled-components": "^5.1.1",
+    "text-encoding": "^0.7.0"
+  },
   "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "@svgr/webpack": "^5.4.0",
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.3.0",
     "eslint": "^7.10.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.21.2",
-    "eslint-plugin-react-hooks": "^4.1.2"
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "file-loader": "^6.1.0",
+    "nodemon": "^2.0.4",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }
