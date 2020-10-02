@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
 
 import Splash from '../../assets/splash.svg';
 
@@ -50,9 +49,6 @@ const EnterButton = styled.div`
 `;
 
 function SignIn() {
-    const {
-      loginWithRedirect,
-    } = useAuth0();
   return (
     <>
       <Graphic>
@@ -63,7 +59,6 @@ function SignIn() {
       </WelcomeText>
       <NavLink to="/home">
         <EnterButton>
-        {/* <EnterButton onClick={() => loginWithRedirect()}> */}
           click to enter
         </EnterButton>
       </NavLink>

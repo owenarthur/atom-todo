@@ -1,6 +1,8 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+
 import NotStarted from '../../assets/not-started.svg';
 import InProgress from '../../assets/in-progress.svg';
 import Completed from '../../assets/completed.svg';
@@ -46,15 +48,17 @@ const ContentBarStatus = styled.div`
 function Content({ color, title, status }) {
   const statSVG = status === 1 ? (<NotStarted />) : (status === 2 ? <InProgress /> : <Completed />);
   return (
-    <ContentBar>
-      <ContentBarColor color={color} />
-      <ContentBarText>
-        { title }
-      </ContentBarText>
-      <ContentBarStatus>
-        { statSVG }
-      </ContentBarStatus>
-    </ContentBar>
+    <NavLink to="/current">
+      <ContentBar>
+        <ContentBarColor color={color} />
+        <ContentBarText>
+          { title }
+        </ContentBarText>
+        <ContentBarStatus>
+          { statSVG }
+        </ContentBarStatus>
+      </ContentBar>
+    </NavLink>
   );
 }
 
