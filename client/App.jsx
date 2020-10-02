@@ -6,6 +6,8 @@ import { AnimatedSwitch } from 'react-router-transition';
 import history from './utils/history';
 import SignIn from './components/sign-in-screen/SignIn.jsx';
 import Home from './components/home-screen/Home.jsx';
+import NewTodo from './components/new-screen/NewTodo.jsx';
+import CurrentTodo from './components/current-screen/CurrentTodo.jsx';
 
 const Backdrop = styled.div`
   height: 100vh;
@@ -84,6 +86,12 @@ const App = () => (
           </Route>
           <Route path="/home">
             <Home todos={todos} />
+          </Route>
+          <Route path="/new">
+            <NewTodo />
+          </Route>
+          <Route path="/current">
+            <CurrentTodo />
           </Route>
         </AnimatedSwitch>
       </Container>
