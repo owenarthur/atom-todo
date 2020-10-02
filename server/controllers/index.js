@@ -13,6 +13,7 @@ module.exports = {
     },
 
     post: (req, res) => {
+      console.log('posting')
       const data = req.body;
       console.log(data)
       models.postTodo(data, (error, result) => {

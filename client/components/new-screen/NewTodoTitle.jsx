@@ -34,12 +34,17 @@ const TitleFormColor = styled.div`
   background: rgba(255, 255, 255, 0.5);
 `;
 
-function NewTodoTitle() {
+function NewTodoTitle({ titleChange }) {
+
+  const onChange = (e) => {
+    titleChange(e.target.value)
+  }
+
   return (
     <>
       <TitleFormDiv>
         <TitleFormColor />
-        <input type="text" id="title" placeholder="type todo" />
+        <input type="text" id="title" placeholder="type todo" onChange={onChange} />
       </TitleFormDiv>
     </>
   );

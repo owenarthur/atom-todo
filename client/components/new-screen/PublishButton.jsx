@@ -6,6 +6,7 @@ const PublishButtonDiv = styled.div`
   width: 375px;
   height: 56px;
   left: 0px;
+  cursor: pointer;
 
   background: rgba(216, 255, 198, 0.3)
 `;
@@ -23,9 +24,12 @@ const PublishButtonText = styled.div`
   color: #ADFF87;
 `;
 
-function PublishButton() {
+function PublishButton({ onSubmit }) {
+  const onClick = () => {
+    onSubmit()
+  }
   return (
-    <PublishButtonDiv>
+    <PublishButtonDiv onClick={onClick}>
       <PublishButtonText>
         publish to my list
       </PublishButtonText>

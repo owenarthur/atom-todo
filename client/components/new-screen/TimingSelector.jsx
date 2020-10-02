@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StatusSelectorDiv = styled.div`
+const TimingSelectorDiv = styled.div`
   position: relative;
   width: 375px;
   height: 56px;
   left: 0px;
+  cursor: pointer;
   background: rgba(255, 255, 255, 0.1)
 `;
 
-const StatusSelectorText = styled.div`
+const TimingSelectorText = styled.div`
   text-align: right;
   padding-right: 50px;
   font-family: Futura;
@@ -21,7 +22,7 @@ const StatusSelectorText = styled.div`
   color: #FFFFFF;
 `;
 
-const StatusSelecterIcon = styled.div`
+const TimingSelecterIcon = styled.div`
   position: absolute;
   width: 24px;
   height: 24px;
@@ -34,18 +35,23 @@ const StatusSelecterIcon = styled.div`
   border-radius: 3px;
 `;
 
-function StatusSelector({ status, color }) {
-  const string = `mark as ${status}`
+function TimingSelector({ timing, num, color, timingChange }) {
+  const string = `mark as ${timing}`
+
+  const onClick = (e) => {
+    timingChange(num)
+  }
+
   return (
     <>
-      <StatusSelectorDiv>
-        <StatusSelectorText>
+      <TimingSelectorDiv onClick={onClick}>
+        <TimingSelectorText>
           { string }
-        </StatusSelectorText>
-        <StatusSelecterIcon color={color} />
-      </StatusSelectorDiv>
+        </TimingSelectorText>
+        <TimingSelecterIcon color={color} />
+      </TimingSelectorDiv>
     </>
   );
 }
 
-export default StatusSelector;
+export default TimingSelector;

@@ -26,10 +26,15 @@ const DetailFormDiv = styled.div`
   }
   `;
 
-function NewTodoDetail() {
+function NewTodoDetail({ descriptionChange }) {
+
+  const onChange = (e) => {
+    descriptionChange(e.target.value)
+  }
+
   return (
     <DetailFormDiv>
-      <input type="text" id="detail" placeholder="any details?" />
+      <input type="text" id="detail" placeholder="any details?" onChange={onChange} />
     </DetailFormDiv>
   );
 }

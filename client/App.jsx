@@ -41,17 +41,23 @@ class App extends Component {
     super(props);
     this.state = {
       current: {},
+      token: '',
     }
     this.selectTodo = this.selectTodo.bind(this);
+    this.updateToken = this.updateToken.bind(this);
   }
 
-  selectTodo( current ) {
-    // this.setState({ current });
-    console.log(current);
+  selectTodo(current) {
+    this.setState({ current });
+  }
+
+  updateToken(fetchedToken) {
+    const { token } = this.state;
+    if(!token) this.setState({ token: fetchedToken });
   }
 
   render() {
-    const { current } = this.state;
+    const { current, token } = this.state;
     return (
       <Router history={ history }>
         <Backdrop>
@@ -68,10 +74,10 @@ class App extends Component {
                 <SignIn />
               </Route>
               <Route path="/home">
-                <Home selectTodo={this.selectTodo} />
+                <Home selectTodo={this.selectTodo} updateToken={this.updateToken} />
               </Route>
               <Route path="/new">
-                <NewTodo />
+                <NewTodo token={token}/>
               </Route>
               <Route path="/current">
                 <CurrentTodo current={current}/>

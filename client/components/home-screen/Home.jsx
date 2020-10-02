@@ -12,7 +12,7 @@ const TodoBody = styled.div`
   top: 98px;
 `;
 
-function Home({ selectTodo }) {
+function Home({ selectTodo, updateToken }) {
   const [allTodos, setAllTodos] = useState([]);
   let [nows, soons, laters] = [[],[],[]]
   if (allTodos.length) {
@@ -25,6 +25,8 @@ function Home({ selectTodo }) {
   const [token, setToken] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const { email } = user;
+
+
 
   const getTodos = (token, email) => {
     const options = {
@@ -39,51 +41,26 @@ function Home({ selectTodo }) {
       .finally(() => {
         setLoaded(true);
       })
-  }
+  };
 
-  const postTodo = () => {
-    if(loaded) {
-    const todo = {
-      user: "owenarthurdesign@gmail.com",
-      todoId: 1,
-      title: "second from react",
-      description: "i extra need a job",
-      status: 1,
-      timing: 3,
-    }
 
-    const options = {
-      method: 'POST',
-      url: `http://localhost:5000/todos/${email}`,
-      headers: { authorization: `Bearer ${token}` },
-      data: todo
-    };
-    axios.request(options)
-      .then((response) => setAllTodos(response.data))
-      .catch((error) => console.error(error))
-      .finally(() => {
-        setLoaded(false);
-      })
-    }
-  }
 
   useEffect(() => {
     if (!loaded) {
       getAccessTokenSilently()
         .then(token => {
           getTodos(token)
-          setToken(token);
+          setToken(token)
+          updateToken(token);
         })
     }
   });
 
 
-
-
   return (
     <>
       <Header />
-      <div onClick={postTodo}>help</div>
+      {/* <div onClick={postTodo}>help</div> */}
       <TodoBody>
         <Section title="NOW" color="#FF6A6A" todos={nows} selectTodo={selectTodo}/>
         <Section title="SOON" color="#FFD56A" todos={soons} selectTodo={selectTodo}/>
