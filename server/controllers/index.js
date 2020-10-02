@@ -5,6 +5,7 @@ module.exports = {
   todos: {
 
     get: (req, res) => {
+      console.log('getting');
       models.getTodos(req, (error, result) => {
         if (error) res.status(404).send();
         else res.status(200).send(result);
@@ -13,6 +14,7 @@ module.exports = {
 
     post: (req, res) => {
       const data = req.body;
+      console.log(data)
       models.postTodo(data, (error, result) => {
         if (error) console.log('error at the post controller');
         else res.send(result);

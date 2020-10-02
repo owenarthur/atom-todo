@@ -14,7 +14,7 @@ const EndSpacer = styled.div`
 
 function Section({ title, color, todos }) {
   const contents = todos.map((todo, index) => (
-    <div>
+    <div key={todo._id}>
       <Content
         color={color}
         title={todo.title}

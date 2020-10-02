@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/db', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/todos', { useNewUrlParser: true, useUnifiedTopology: true })
   .catch((error) => console.log(error));
 
 mongoose.connection.on('error', (err) => console.log(err));
 
 const todoSchema = new mongoose.Schema({
-  userId: Number,
   user: String,
   todoId: Number,
   title: String,
