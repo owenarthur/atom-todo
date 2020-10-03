@@ -10,17 +10,38 @@ import NewTodo from './components/new-screen/NewTodo.jsx';
 import CurrentTodo from './components/current-screen/CurrentTodo.jsx';
 
 const Backdrop = styled.div`
-  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
   width: 100vw;
+  height: 100vh;
   background: rgba(19, 71, 114, 0.71);
+
+
+  .leftPad {
+    flex-grow: 4;
+    flex-shrink: 4;
+    flex-basis: 90%;
+  }
+
+  .center {
+    flex: none;
+    width: 375px;
+    height: 812px;
+  }
+
+  .rightPad {
+    flex-grow: 4;
+    flex-shrink: 4;
+    flex-basis: 90%;
+  }
 `;
 
 const Container = styled.div`
-  height: 812px;
-  min-width: 375px;
-  max-width: 375px;
-  margin: 0 auto;
   background: #3F4448;
+  height: 100%;
+  width: 100%;
 
   .switch-wrapper {
     position: relative;
@@ -61,29 +82,33 @@ class App extends Component {
     return (
       <Router history={history}>
         <Backdrop>
-          <Container>
-            <AnimatedSwitch
-              exact
-              path="/"
-              atEnter={{ opacity: 0 }}
-              atLeave={{ opacity: 0 }}
-              atActive={{ opacity: 1 }}
-              className="switch-wrapper"
-            >
-              <Route exact path="/">
-                <SignIn />
-              </Route>
-              <Route path="/home">
-                <Home selectTodo={this.selectTodo} updateToken={this.updateToken} token={token} />
-              </Route>
-              <Route path="/new">
-                <NewTodo token={token} />
-              </Route>
-              <Route path="/current">
-                <CurrentTodo current={current} token={token} />
-              </Route>
-            </AnimatedSwitch>
-          </Container>
+          <div className="leftPad" />
+          <div className="center">
+            <Container>
+              <AnimatedSwitch
+                exact
+                path="/"
+                atEnter={{ opacity: 0 }}
+                atLeave={{ opacity: 0 }}
+                atActive={{ opacity: 1 }}
+                className="switch-wrapper"
+                >
+                <Route exact path="/">
+                  <SignIn />
+                </Route>
+                <Route path="/home">
+                  <Home selectTodo={this.selectTodo} updateToken={this.updateToken} token={token} />
+                </Route>
+                <Route path="/new">
+                  <NewTodo token={token} />
+                </Route>
+                <Route path="/current">
+                  <CurrentTodo current={current} token={token} />
+                </Route>
+              </AnimatedSwitch>
+            </Container>
+          </div>
+          <div className="rightPad" />
         </Backdrop>
       </Router>
     );
@@ -91,3 +116,26 @@ class App extends Component {
 }
 
 export default App;
+
+
+// width: 100vw;
+// // width: 375px;
+// const Wrapper = styled.div`
+
+//     .help {
+//       height: 100vh;
+//       width: 375px;
+//       background-color: tan;
+//     }
+//     @media screen
+//       and (max-device-width: 375px)
+//       and (min-device-width: 0px)
+//       {
+//         .help {
+//           background-color: blue;
+//           width: 100vw;
+//         }
+
+// }
+
+// `;

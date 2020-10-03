@@ -41,7 +41,7 @@ const HeaderBack = styled.div`
   width: 60px;
   height: 23px;
   left: 25px;
-  top: 50px;
+  top: 52px;
 
   font-family: Futura;
   font-style: normal;
