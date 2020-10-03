@@ -61,7 +61,7 @@ function CurrentTodo({current, token}) {
     const todo = current;
     const options = {
       method: 'DELETE',
-      url: `http://localhost:5000/todos/${user}/${_id}`,
+      url: `http://18.222.120.26:5000/todos/${user}/${_id}`,
       headers: { authorization: `Bearer ${token}` },
       data: todo,
     };
@@ -81,7 +81,7 @@ function CurrentTodo({current, token}) {
     };
     const options = {
       method: 'PUT',
-      url: `http://localhost:5000/todos/${user}/${_id}`,
+      url: `http://18.222.120.26:5000/todos/${user}/${_id}`,
       headers: { authorization: `Bearer ${token}` },
       data: todo,
     };

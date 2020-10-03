@@ -30,7 +30,7 @@ function Home({ selectTodo, updateToken, token }) {
   const getTodos = () => {
     const options = {
       method: 'GET',
-      url: `http://localhost:5000/todos/${email}`,
+      url: `http://18.222.120.26:5000/todos/${email}`,
       headers: { authorization: `Bearer ${token}` },
     };
 

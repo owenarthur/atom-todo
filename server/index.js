@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const jwt = require('express-jwt');
 const jwtAuthz = require('express-jwt-authz');
 const jwksRsa = require('jwks-rsa');
+const cors = require('cors');
 
 const express = require('express');
 const controllers = require('./controllers/index.js');
@@ -24,7 +25,7 @@ const checkJwt = jwt({
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use(cors);
 app.use(express.static(path.join(__dirname, '/../public')));
 app.get('/todos/:user', checkJwt, controllers.todos.get);
 app.post('/todos/:user', checkJwt, controllers.todos.post);

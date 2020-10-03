@@ -39,7 +39,7 @@ function NewTodo({ token }) {
     };
     const options = {
       method: 'POST',
-      url: `http://localhost:5000/todos/${email}`,
+      url: `http://18.222.120.26:5000/todos/${email}`,
       headers: { authorization: `Bearer ${token}` },
       data: todo,
     };

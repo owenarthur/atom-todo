@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/todos', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://ec2-18-222-120-26.us-east-2.compute.amazonaws.com/todos', { useNewUrlParser: true, useUnifiedTopology: true })
   .catch((error) => console.log(error));
 
 mongoose.connection.on('error', (err) => console.log(err));
