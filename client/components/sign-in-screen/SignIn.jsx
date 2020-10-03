@@ -67,7 +67,11 @@ const CreditButton = styled.div`
   line-height: 56px;
   letter-spacing: .05em;
   text-align: center;
-  color: #FFFFFF;
+
+  a{
+    color: #FFFFFF;
+    text-decoration: none;
+  }
 `;
 
 function SignIn() {
@@ -85,7 +89,9 @@ function SignIn() {
         </EnterButton>
       </NavLink>
       <CreditButton>
-        made on friday by owen for atom
+        <a href="https://github.com/owenarthur/atom-todo" target="_blank">
+          made on friday by owen for atom
+        </a>
       </CreditButton>
     </>
   );
