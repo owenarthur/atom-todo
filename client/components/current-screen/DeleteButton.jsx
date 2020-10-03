@@ -7,7 +7,7 @@ const DeleteButtonDiv = styled.div`
   height: 56px;
   left: 0px;
   cursor: pointer;
-
+  border-radius: 4px;
   background: rgba(255, 170, 170, 0.3);
 `;
 

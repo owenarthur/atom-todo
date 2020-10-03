@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 import Add from '../../assets/add.svg';
+import Carrot from '../../assets/carrot.svg';
 
 const HeaderDiv = styled.div`
   height: 98px;
@@ -38,28 +39,18 @@ const AddButton = styled.div`
 
 const HeaderBack = styled.div`
   position: absolute;
-  width: 60px;
-  height: 23px;
+  width: 14px;
+  height: 11px;
   left: 25px;
-  top: 50px;
-
-  font-family: Futura;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-
-  letter-spacing: 0.2em;
-
-  color: #FFFFFF;
+  top: 55px;
 `;
 
 function Header() {
-  const carrot = '<';
   return (
     <HeaderDiv>
       <NavLink to="/">
         <HeaderBack>
-          {carrot}
+          <Carrot />
         </HeaderBack>
       </NavLink>
       <HeaderText>

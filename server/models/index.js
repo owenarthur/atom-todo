@@ -1,9 +1,8 @@
 const { Todo } = require('../database');
 
 module.exports = {
-  getTodos: (data, callback) => {
-    const email = data.params.id;
-    Todo.find({ email })
+  getTodos: (user, callback) => {
+    Todo.find({ user })
       .then((result) => callback(null, result))
       .catch((err) => console.log(err));
   },

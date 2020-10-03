@@ -6,6 +6,7 @@ const DetailFormDiv = styled.div`
   width: 375px;
   height: 136px;
   left: 0px;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.1);
 
   #detail {
@@ -14,9 +15,15 @@ const DetailFormDiv = styled.div`
     height: 68px;
     width: 300px;
     background-color:rgba(0, 0, 0, 0);
-    color:white;
     border: none;
     outline:none;
+
+    font-family: Futura;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 68px;
+    color: #FFFFFF;
   }
   #detail:not(:focus) {
     border: none;

@@ -28,21 +28,21 @@ const ContentBar = styled.div`
   height: 68px;
   left: 0px;
   cursor: pointer;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.1)
 `;
 
 const ContentBarText = styled.div`
   position: absolute;
   height: 23px;
-  left: 170px;
+  left: 180px;
   align-items: right;
 
   font-family: Futura;
   font-style: normal;
-  font-weight: 200;
-  font-size: 12px;
+  font-weight: 100;
+  font-size: 14px;
   line-height: 68px;
-  letter-spacing: 0.2em;
   color: #FFFFFF;
 `;
 
@@ -61,7 +61,7 @@ function CurrentTodo({current, token}) {
     const todo = current;
     const options = {
       method: 'DELETE',
-      url: `http://localhost:5000/todos/${user}/${_id}`,
+      url: `http://ec2-18-222-120-26.us-east-2.compute.amazonaws.com:5000/todos/${user}/${_id}`,
       headers: { authorization: `Bearer ${token}` },
       data: todo,
     };
@@ -81,7 +81,7 @@ function CurrentTodo({current, token}) {
     };
     const options = {
       method: 'PUT',
-      url: `http://localhost:5000/todos/${user}/${_id}`,
+      url: `http://ec2-18-222-120-26.us-east-2.compute.amazonaws.com:5000/todos/${user}/${_id}`,
       headers: { authorization: `Bearer ${token}` },
       data: todo,
     };
@@ -110,9 +110,9 @@ function CurrentTodo({current, token}) {
     <>
       <Header />
       <TodoBody>
-        <CurrentTodoTitle title={title} />
+        <CurrentTodoTitle title={title} timing={timing} />
         <MidSpacer />
-        <CurrentTodoDescription description={description} />
+        <CurrentTodoDescription description={description} timing={timing} />
         <MidSpacer />
         <NavLink to="/home" style={{ textDecoration: 'none' }}>
           <ContentBar onClick={markNotStarted}>
