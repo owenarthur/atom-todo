@@ -16,7 +16,7 @@ const Backdrop = styled.div`
 
   width: 100vw;
   height: 100vh;
-  background: rgba(19, 71, 114, 0.71);
+  background: #3F4448;
 
 
   .leftPad {
@@ -117,25 +117,4 @@ class App extends Component {
 
 export default App;
 
-
-// width: 100vw;
-// // width: 375px;
-// const Wrapper = styled.div`
-
-//     .help {
-//       height: 100vh;
-//       width: 375px;
-//       background-color: tan;
-//     }
-//     @media screen
-//       and (max-device-width: 375px)
-//       and (min-device-width: 0px)
-//       {
-//         .help {
-//           background-color: blue;
-//           width: 100vw;
-//         }
-
-// }
-
-// `;
+// background: rgba(19, 71, 114, 0.71);

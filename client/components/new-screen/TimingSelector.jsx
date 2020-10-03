@@ -7,6 +7,7 @@ const TimingSelectorDiv = styled.div`
   height: 56px;
   left: 0px;
   cursor: pointer;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.1)
 `;
 

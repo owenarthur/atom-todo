@@ -6,6 +6,7 @@ const TitleFormDiv = styled.div`
   width: 375px;
   height: 68px;
   left: 0px;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.1);
 `;
 
@@ -14,6 +15,7 @@ const TitleFormColor = styled.div`
   width: 17px;
   height: 68px;
   left: 0px;
+  border-radius: 4px 0px 0px 4px;
   background: ${(props) => props.color};
 `;
 
@@ -24,10 +26,9 @@ const TitleBarText = styled.div`
 
   font-family: Futura;
   font-style: normal;
-  font-weight: 200;
-  font-size: 12px;
+  font-weight: 100;
+  font-size: 16px;
   line-height: 68px;
-  letter-spacing: 0.2em;
   color: #FFFFFF;
 `;
 

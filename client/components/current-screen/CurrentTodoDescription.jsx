@@ -6,6 +6,7 @@ const DescriptionFormDiv = styled.div`
   width: 375px;
   height: 136px;
   left: 0px;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.1);
 `;
 
@@ -14,6 +15,7 @@ const DescriptionFormColor = styled.div`
   width: 17px;
   height: 136px;
   left: 0px;
+  border-radius: 4px 0px 0px 4px;
   background: ${(props) => props.color};
 `;
 
@@ -23,11 +25,10 @@ const DescriptionFormText = styled.div`
   left: 30px;
 
   font-family: Futura;
-  font-style: normal;
-  font-weight: 200;
-  font-size: 12px;
+  font-style: light;
+  font-weight: 100;
+  font-size: 14px;
   line-height: 68px;
-  letter-spacing: 0.2em;
   color: #FFFFFF;
 `;
 

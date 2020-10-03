@@ -7,6 +7,7 @@ const TitleBar = styled.div`
   width: 375px;
   height: 34px;
   left: 0px;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.1)
 `;
 
@@ -15,6 +16,7 @@ const TitleBarColor = styled.div`
   width: 17px;
   height: 34px;
   left: 0px;
+  border-radius: 4px 0px 0px 4px;
   background: ${(props) => props.color};
 `;
 

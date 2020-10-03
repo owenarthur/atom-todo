@@ -28,21 +28,21 @@ const ContentBar = styled.div`
   height: 68px;
   left: 0px;
   cursor: pointer;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.1)
 `;
 
 const ContentBarText = styled.div`
   position: absolute;
   height: 23px;
-  left: 170px;
+  left: 180px;
   align-items: right;
 
   font-family: Futura;
   font-style: normal;
-  font-weight: 200;
-  font-size: 12px;
+  font-weight: 100;
+  font-size: 14px;
   line-height: 68px;
-  letter-spacing: 0.2em;
   color: #FFFFFF;
 `;
 
