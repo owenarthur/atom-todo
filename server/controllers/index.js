@@ -6,7 +6,7 @@ module.exports = {
 
     get: (req, res) => {
       console.log('getting');
-      const { user } = req.body;
+      const { user } = req.params;
       models.getTodos(user, (error, result) => {
         if (error) res.status(404).send();
         else res.status(200).send(result);
