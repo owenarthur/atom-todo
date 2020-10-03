@@ -14,7 +14,7 @@ const DescriptionFormColor = styled.div`
   width: 17px;
   height: 136px;
   left: 0px;
-  background: #FF6A6A;
+  background: ${(props) => props.color};
 `;
 
 const DescriptionFormText = styled.div`
@@ -31,11 +31,12 @@ const DescriptionFormText = styled.div`
   color: #FFFFFF;
 `;
 
-function CurrentTodoDescription({description}) {
+function CurrentTodoDescription({description, timing}) {
+  const color = timing === 1 ? '#FF6A6A' : (timing === 2 ? '#FFD56A' : '#6A9DFF');
   return (
     <>
       <DescriptionFormDiv>
-        <DescriptionFormColor />
+        <DescriptionFormColor color={color} />
         <DescriptionFormText>
           {description}
         </DescriptionFormText>

@@ -110,9 +110,9 @@ function CurrentTodo({current, token}) {
     <>
       <Header />
       <TodoBody>
-        <CurrentTodoTitle title={title} />
+        <CurrentTodoTitle title={title} timing={timing} />
         <MidSpacer />
-        <CurrentTodoDescription description={description} />
+        <CurrentTodoDescription description={description} timing={timing} />
         <MidSpacer />
         <NavLink to="/home" style={{ textDecoration: 'none' }}>
           <ContentBar onClick={markNotStarted}>

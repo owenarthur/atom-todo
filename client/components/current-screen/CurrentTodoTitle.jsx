@@ -14,7 +14,7 @@ const TitleFormColor = styled.div`
   width: 17px;
   height: 68px;
   left: 0px;
-  background: #FF6A6A;
+  background: ${(props) => props.color};
 `;
 
 const TitleBarText = styled.div`
@@ -31,11 +31,12 @@ const TitleBarText = styled.div`
   color: #FFFFFF;
 `;
 
-function CurrentTodoTitle({title}) {
+function CurrentTodoTitle({title, timing}) {
+  const color = timing === 1 ? '#FF6A6A' : (timing === 2 ? '#FFD56A' : '#6A9DFF');
   return (
     <>
       <TitleFormDiv>
-        <TitleFormColor />
+        <TitleFormColor color={color} />
         <TitleBarText>
           {title}
         </TitleBarText>
