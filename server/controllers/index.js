@@ -6,7 +6,8 @@ module.exports = {
 
     get: (req, res) => {
       console.log('getting');
-      models.getTodos(req, (error, result) => {
+      const { user } = req.body;
+      models.getTodos(user, (error, result) => {
         if (error) res.status(404).send();
         else res.status(200).send(result);
       });
@@ -33,7 +34,7 @@ module.exports = {
 
     put: (req, res) => {
       console.log('putting');
-      console.log(req.body)
+      console.log(req.body);
       const params = { user: req.body.user, _id: req.body._id };
       const { status } = req.body;
       models.updateTodo(params, status, (error, result) => {
