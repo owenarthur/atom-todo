@@ -26,16 +26,12 @@ const TitleBarText = styled.div`
   height: 23px;
   left: 30px;
 
-  @import url("https://use.typekit.net/gaa7tdr.css");
   font-family: Futura;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 14px;
   line-height: 34px;
-
-
   letter-spacing: 0.2em;
-
   color: #FFFFFF;
 `;
 

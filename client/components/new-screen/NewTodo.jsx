@@ -68,7 +68,7 @@ function NewTodo({ token }) {
     <>
       <Header />
       <TodoBody>
-        <NewTodoTitle titleChange={titleChange} />
+        <NewTodoTitle titleChange={titleChange} timing={timing} />
         <MidSpacer />
         <NewTodoDescription descriptionChange={descriptionChange} />
         <MidSpacer />

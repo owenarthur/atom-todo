@@ -41,10 +41,21 @@ const TitleFormColor = styled.div`
   height: 68px;
   left: 0px;
   border-radius: 4px 0px 0px 4px;
-  background: rgba(255, 255, 255, 0.5);
+  background: ${(props) => props.color};
 `;
 
-function NewTodoTitle({ titleChange }) {
+function NewTodoTitle({ titleChange, timing }) {
+  let color;
+  if (timing === '1') {
+    color = '#FF6A6A';
+  } else if (timing === '2') {
+    color = '#FFD56A';
+  } else if (timing === '3') {
+    color = '#6A9DFF';
+  } else {
+    color = 'rgba(255, 255, 255, 0.5)';
+  }
+
   const onChange = (e) => {
     titleChange(e.target.value);
   };
@@ -52,7 +63,7 @@ function NewTodoTitle({ titleChange }) {
   return (
     <>
       <TitleFormDiv>
-        <TitleFormColor />
+        <TitleFormColor color={color} />
         <input type="text" id="title" placeholder="type todo" onChange={onChange} />
       </TitleFormDiv>
     </>
